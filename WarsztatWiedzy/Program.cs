@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Mod_1
 {
@@ -7,9 +8,18 @@ namespace Mod_1
     {
         static void Main(string[] args)
         {
+            Calc kalkulator = new Calc();
+
+            Console.WriteLine("Cześć jestem kalkulator");
+            Console.WriteLine("Podaj liczbe A i B ");
+            var wynik = kalkulator.Dodaj(Console.ReadLine(), Console.ReadLine());
+            Console.WriteLine(wynik);
+            Debugger.Break();
+            
+
             // utworznie obiektu
             Human John = new Human("CDG234123");
-
+            
             // nadanie wieku przez property (get;set;)
             John.Age = 19;
 
@@ -31,22 +41,25 @@ namespace Mod_1
             }
 
             //other things we did
-            if(John.Age < 18)
+            if (John.Age < 18)
                 Console.WriteLine("John jest niepelnoletni");
 
-            //inne typy danych:
-            //https://docs.microsoft.com/pl-pl/dotnet/csharp/language-reference/builtin-types/built-in-types
+            ////inne typy danych:
+            ////https://docs.microsoft.com/pl-pl/dotnet/csharp/language-reference/builtin-types/built-in-types
 
-            Console.WriteLine($"Johns age {John.Age}");
-            Console.ReadKey();
+            //Console.WriteLine($"Johns age {John.Age}");
+            //Console.ReadKey();
+            Console.ReadLine();
+
         }
 
     }
 
+
     class Human
     {
         public string Id { get; set; }
-        public string Name { get; set; }
+        private string _name;
         public int Age { get; set; }
         public List<string> Friends { get; set; }
 
@@ -58,14 +71,16 @@ namespace Mod_1
             Friends = new List<string>();
         }
 
+        //Ta funkcja nic nie zwraca
         public void SetName(string name)
         {
-            Name = name;
+            _name = name;
         }
-
+        
+        //ta funkcja zwraca string
         public string GetName()
         {
-            return Name;
+            return _name;
         }
     }
 }
